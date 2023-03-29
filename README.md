@@ -10,8 +10,23 @@
 - 커스텀 지정한 경우 입력 시, 지정 커스텀으로만 구성한다.
 - 커스텀은 한글자이어야 한다.
 
----
+## 2. 자동차 경주 게임
+### 요구사항
+1. 자동차에 이름을 부여할 수 있는데, 5자를 초과할 수 없다. `Car#isNameUnderFive`
+2. 전진하는 자동차 출력 시 자동차 이름을 함께 출력한다.  `Car#printMovingCarName`
+3. 자동차 이름은 쉼표(,)를 기준으로 구분한다. `Car#separateCarName`
+4. 자동차 전진 조건 : 0~9 사이에서 랜덤값 구한 후 랜덤값이 4 이상일 경우 전진 가능하다. `GamePlayer#getRendomNumber`, `Car#moveCar`
+5. 자동차 경주 게임 완료 후, 누가 우승했는지 알려준다. 우승자는 1명 이상일 수 있다. `Car#getGameWinner`
 
+- 시도할 횟수를 입력받은 만큼 실행한 후 게임을 종료한다. `GamePlayer#play`
+- 진행 사항을 알려주는 방법 : '-'  `GamePlayer#getProgress`
+
+
+### 프로그래밍 요구사항
+- 모든 원시 값과 문자열을 포장한다.
+- 일급 컬렉션을 쓴다.
+
+---
 ## [NEXTSTEP 플레이그라운드의 미션 진행 과정](https://github.com/next-step/nextstep-docs/blob/master/playground/README.md)
 
 ---
