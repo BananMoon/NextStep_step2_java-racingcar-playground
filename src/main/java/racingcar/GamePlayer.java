@@ -10,7 +10,8 @@ import java.util.List;
  * - 자동차 이름은 5자를 초과할 수 없다. 초과하는 자동차는 패스한다.
  */
 public class GamePlayer {
-    private static List<Car> cars = new ArrayList<>();
+    private static final int FORWARD_LIMIT_NUM = 4;
+    private static final List<Car> cars = new ArrayList<>();
 
     public static String[] separateCarName(String input) {
         return input.split(",");
@@ -21,15 +22,11 @@ public class GamePlayer {
         if (randomNum < 0 || randomNum >= 10) {
             throw new IllegalArgumentException("랜덤값은 0~10 사이이어야 합니다.");
         }
-        return randomNum >= 4;
+        return randomNum >= FORWARD_LIMIT_NUM;
     }
 
     public void joinCar(List<String> carNames) {
         for (String carName : carNames) {
-            if (Car.isNameOverFive(carName)) {
-                System.out.println("자동차 이름은 5자를 초과할 수 없습니다.");
-                return;
-            }
             cars.add(new Car(carName));
         }
     }
@@ -48,13 +45,16 @@ public class GamePlayer {
         int maxCarPositon = 0;
 
         for (Car car : cars) {
-            if (maxCarPositon < car.getPosition()) {
+//            if (maxCarPositon < car.getPosition()) {
+            if (maxCarPositon < car.getNewPosition().getPosition()) {
                 winners = new ArrayList<>();   // reset
                 winners.add(car);
                 carNames.add(car.getName());
-                maxCarPositon = car.getPosition();
+//                maxCarPositon = car.getPosition();
+                maxCarPositon = car.getNewPosition().getPosition();
             }
-            else if (maxCarPositon == car.getPosition() && maxCarPositon > 0) {
+//            else if (maxCarPositon == car.getPosition() && maxCarPositon > 0) {
+            else if (maxCarPositon == car.getNewPosition().getPosition() && maxCarPositon > 0) {
                 winners.add(car);
                 carNames.add(car.getName());
             }
@@ -84,8 +84,9 @@ public class GamePlayer {
         int tryCount = IOUtil.inputInt();
 
         System.out.println("실행 결과\n");
-        // 최초 출력
+        // 최초 1회 이동 및 출력
         for (Car car : cars) {
+            car.move();
             IOUtil.printCarMoveStatus(car);
         }
         System.out.println();

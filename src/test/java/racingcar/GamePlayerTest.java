@@ -28,7 +28,7 @@ public class GamePlayerTest {
         gamePlayer.joinCar(separatedInputs);
 
         assertThat(gamePlayer.getCars().size()).isEqualTo(separatedInputs.size());
-        assertThat(gamePlayer.getCars().get(0).getPosition()).isEqualTo(1);
+        assertThat(gamePlayer.getCars().get(0).getPosition()).isEqualTo(0);
         assertThat(gamePlayer.getCars().get(0).getName()).isEqualTo(moon.getName());
     }
 
@@ -69,6 +69,7 @@ public class GamePlayerTest {
 
         List<String> carNames = gamePlayer.getMaxMovedCarNames();
         assertThat(carNames.size()).isEqualTo(2);
+
         assertThat(carNames.containsAll(Arrays.asList(car1.getName(), car2.getName()))).isTrue();
     }
 }
