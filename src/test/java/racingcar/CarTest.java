@@ -11,7 +11,8 @@ public class CarTest {
     @DisplayName("성공 - 차의 이름은 5글자 초과하지 않는다.")
     void carNameSuccessTest() {
         String carName = "붕붕이";
-        assertThat(Car.isNameOverFive(carName)).isFalse();
+        Car car = new Car(carName);
+        assertThat(car.isNameOverFive(car.getName())).isFalse();
     }
 
     @Test
@@ -20,7 +21,11 @@ public class CarTest {
         String carName = "붕붕이";
         Car car = new Car(carName);
         car.move();
-        assertThat(car.getPosition()).isEqualTo(2);
+//        assertThat(car.getPosition()).isEqualTo(1);
+//        assertThat(car.getPosition()).isEqualTo(1);
+        // Position 객체 생성 후 통과 테스트
+        assertThat(car.getNewPosition()).isEqualTo(new Position(1));
+        assertThat(car.getNewPosition()).isEqualTo(new Position(1));
     }
     @Test
     @DisplayName("움직이는 차는 '-'를 출력한다.")
