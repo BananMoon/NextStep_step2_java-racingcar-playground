@@ -36,6 +36,7 @@ public class Position {
         return Objects.hash(position);
     }
 
+    // 값을 반봔하는 것도 필요하다면 반환할 수 있겠음.
     public void move() {
         this.position += 1;
         // immutable object를 위해서는 return new position(position+1)
