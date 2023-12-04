@@ -19,7 +19,7 @@ public class IOUtil {
     }
     public static void printCarMoveStatus(Car car) {
         System.out.print(car.getName() +" : ");
-        for (int i = 0; i < car.getPosition(); i++) {
+        for (int i = 0; i < car.getNewPosition().getPosition(); i++) {
             System.out.print("-");
         }
         System.out.println();

@@ -115,7 +115,7 @@ public class GamePlayer {
     }
 
     private boolean isNotFinished(Car car) {
-        return car.getPosition() < 5;
+        return car.getNewPosition().getPosition() < 5;
     }
 
     public static void main(String[] args) {

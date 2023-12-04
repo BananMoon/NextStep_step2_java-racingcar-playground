@@ -23,13 +23,11 @@ public class GamePlayerTest {
     void createCarInfo() {
         List<String> separatedInputs = new ArrayList<>(Arrays.asList("moon", "sun", "water"));
 
-        Car moon = new Car(separatedInputs.get(0));
         GamePlayer gamePlayer = new GamePlayer();
         gamePlayer.joinCar(separatedInputs);
 
         assertThat(gamePlayer.getCars().size()).isEqualTo(separatedInputs.size());
-        assertThat(gamePlayer.getCars().get(0).getPosition()).isEqualTo(0);
-        assertThat(gamePlayer.getCars().get(0).getName()).isEqualTo(moon.getName());
+        assertThat(gamePlayer.getCars().get(0)).isEqualTo(new Car("moon"));
     }
 
     @Test
