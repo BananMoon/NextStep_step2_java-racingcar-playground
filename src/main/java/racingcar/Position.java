@@ -45,4 +45,8 @@ public class Position {
     public int getPosition() {
         return position;
     }
+
+    public boolean isOver(Position maxPosition) {
+        return this.position > maxPosition.getPosition();
+    }
 }
